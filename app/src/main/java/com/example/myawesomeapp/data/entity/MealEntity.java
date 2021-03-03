@@ -2,21 +2,19 @@ package com.example.myawesomeapp.data.entity;
 
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
+import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+@Entity
 public class MealEntity {
     @NonNull
-    @ColumnInfo(name = "idCategory")
     @PrimaryKey
     public String id;
 
-    @ColumnInfo(name = "strCategory")
     private String title;
 
-    @ColumnInfo(name = "strCategoryDescription")
     private String description;
 
-    @ColumnInfo(name = "strCategoryThumb")
     private String thumbnail;
 
 
