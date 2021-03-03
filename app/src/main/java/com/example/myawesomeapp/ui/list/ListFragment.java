@@ -1,4 +1,4 @@
-package com.example.myawesomeapp.ui.dashboard;
+package com.example.myawesomeapp.ui.list;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,17 +14,17 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.myawesomeapp.R;
 
-public class DashboardFragment extends Fragment {
+public class ListFragment extends Fragment {
 
-    private DashboardViewModel dashboardViewModel;
+    private ListViewModel listViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        dashboardViewModel =
-                ViewModelProviders.of(this).get(DashboardViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_dashboard, container, false);
-        final TextView textView = root.findViewById(R.id.text_dashboard);
-        dashboardViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        listViewModel =
+                ViewModelProviders.of(this).get(ListViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_list, container, false);
+        final TextView textView = root.findViewById(R.id.text_list);
+        listViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);
