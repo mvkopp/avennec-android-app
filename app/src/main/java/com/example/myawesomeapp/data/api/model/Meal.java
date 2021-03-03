@@ -17,6 +17,8 @@ public class Meal {
     @SerializedName("strCategoryThumb")
     private String thumbnail;
 
+    private boolean isFavorite;
+
     public String getId() {
         return id;
     }
@@ -33,4 +35,11 @@ public class Meal {
         return thumbnail;
     }
 
+    public void setFavorite(boolean favorite) {
+        isFavorite = favorite;
+    }
+
+    public boolean isFavorite() {
+        return isFavorite;
+    }
 }
