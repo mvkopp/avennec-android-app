@@ -31,7 +31,7 @@ public class Meal {
         return description;
     }
 
-    public String getMultimedia() {
+    public String getThumbnail() {
         return thumbnail;
     }
 
