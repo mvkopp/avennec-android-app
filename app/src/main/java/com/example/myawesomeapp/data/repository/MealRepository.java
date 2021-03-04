@@ -46,7 +46,7 @@ public class MealRepository {
         return mealLocalDataSource.loadFavorites();
     }
 
-    public Completable addArticleToFavorites(MealEntity mealEntity) {
+    public Completable addMealToFavorites(MealEntity mealEntity) {
         return mealLocalDataSource.addMealToFavorites(mealEntity);
     }
 
