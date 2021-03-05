@@ -5,6 +5,9 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+/**
+ * Meal Entity
+ */
 @Entity
 public class MealEntity {
     @NonNull
@@ -12,9 +15,7 @@ public class MealEntity {
     public String id;
 
     private String title;
-
     private String description;
-
     private String thumbnail;
 
 

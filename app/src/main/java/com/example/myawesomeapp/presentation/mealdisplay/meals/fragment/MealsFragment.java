@@ -1,7 +1,6 @@
 package com.example.myawesomeapp.presentation.mealdisplay.meals.fragment;
 
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,14 +10,12 @@ import android.widget.TextView;
 import android.widget.Toolbar;
 
 import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.myawesomeapp.data.di.FakeDepedencyInjection;
 import com.example.myawesomeapp.data.entity.MealEntity;
@@ -32,10 +29,11 @@ import com.example.myawesomeapp.presentation.viewmodel.MealsViewModel;
 
 import com.example.myawesomeapp.R;
 
-import org.w3c.dom.Text;
-
 import java.util.List;
 
+/**
+ * Favorite fragment class
+ */
 public class MealsFragment extends Fragment implements MealActionInterface {
 
     private RecyclerView recyclerView;
@@ -47,15 +45,16 @@ public class MealsFragment extends Fragment implements MealActionInterface {
     private MealListAdapter mealListAdapter;
     private MealGridAdapter mealGridAdapter;
 
-    final RecyclerView.LayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
-    final GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2, LinearLayoutManager.VERTICAL, false);
-
+    // to check the format
     private static boolean isList = true;
 
     private MealsViewModel mealsViewModel;
 
     private MealFavoriteViewModel mealFavoriteViewModel;
 
+    /**
+     * Meals fragment empty constructor
+     */
     public MealsFragment(){
 
     }
@@ -77,6 +76,7 @@ public class MealsFragment extends Fragment implements MealActionInterface {
         stateLabel = (TextView) getActivity().findViewById(R.id.stateLabel);
         listGridBtn = (ImageView) getActivity().findViewById(R.id.listGridBtn);
 
+        // Recover the toolbar and display it
         Toolbar headerToolbar = (Toolbar) getActivity().findViewById(R.id.header);
         headerToolbar.setVisibility(View.VISIBLE);
 
@@ -87,7 +87,7 @@ public class MealsFragment extends Fragment implements MealActionInterface {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mealFavoriteViewModel = new ViewModelProvider(requireActivity(), FakeDepedencyInjection.getViewModelFactory()).get(MealFavoriteViewModel.class);
-        initRecyclerView();
+        setupRecyclerView();
         registerViewModels();
     }
 
@@ -103,11 +103,14 @@ public class MealsFragment extends Fragment implements MealActionInterface {
         });
     }
 
-    private void initRecyclerView() {
+    /**
+     * Setup the recycler view
+     */
+    private void setupRecyclerView() {
         mealListAdapter = new MealListAdapter(this);
         mealGridAdapter = new MealGridAdapter(this);
-        recyclerView.setAdapter(mealListAdapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setAdapter(mealListAdapter); // by list (default)
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext())); // linear by default
     }
 
     @Override
@@ -115,11 +118,13 @@ public class MealsFragment extends Fragment implements MealActionInterface {
         super.onResume();
         getActivity().findViewById(R.id.listGridBtn).setVisibility(View.VISIBLE);
 
+        // Check if it is a list and set the right icon
         if (isList)
             listGridBtn.setImageResource(R.drawable.ic_baseline_view_list_24);
         else
             listGridBtn.setImageResource(R.drawable.ic_baseline_dashboard_24);
 
+        // listen the list/grid btn
         listGridBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

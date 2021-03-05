@@ -18,21 +18,28 @@ import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.observers.DisposableSingleObserver;
 import io.reactivex.schedulers.Schedulers;
 
+/**
+ * Meals View Model
+ */
 public class MealsViewModel extends ViewModel {
 
     private MealRepository mealRepository;
     private CompositeDisposable compositeDisposable;
     private MealToViewModelMapper mealToViewModelMapper;
 
+    private MutableLiveData<List<MealItemViewModel>> meals = new MutableLiveData<>();
+    private MutableLiveData<Boolean> isDataLoading = new MutableLiveData<Boolean>();
+
+    /**
+     * Meals View Model Constructor
+     * @param mealRepository - the meal repository
+     */
     public MealsViewModel(MealRepository mealRepository) {
         this.mealRepository = mealRepository;
         this.compositeDisposable = new CompositeDisposable();
         this.mealToViewModelMapper = new MealToViewModelMapper();
         getMeals();
     }
-
-    private MutableLiveData<List<MealItemViewModel>> meals = new MutableLiveData<>();
-    private MutableLiveData<Boolean> isDataLoading = new MutableLiveData<Boolean>();
 
     public MutableLiveData<List<MealItemViewModel>> getAllMeals() {
         return meals;
@@ -52,6 +59,9 @@ public class MealsViewModel extends ViewModel {
         return mealRepository;
     }
 
+    /**
+     * Recover the meals
+     */
     public void getMeals() {
         compositeDisposable = getCompositeDisposable();
         mealToViewModelMapper = getMealToViewModelMapper();

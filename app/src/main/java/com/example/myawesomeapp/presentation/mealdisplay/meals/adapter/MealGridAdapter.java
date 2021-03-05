@@ -18,8 +18,14 @@ import com.example.myawesomeapp.R;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Meal Grid Adapter
+ */
 public class MealGridAdapter extends RecyclerView.Adapter<MealGridAdapter.MealGridViewHolder> {
 
+    /**
+     * Meal Grid View Holder static class
+     */
     public static class MealGridViewHolder extends RecyclerView.ViewHolder {
 
         TextView mealTitle;
@@ -32,6 +38,11 @@ public class MealGridAdapter extends RecyclerView.Adapter<MealGridAdapter.MealGr
         MealItemViewModel mealItemViewModel ;
         MealActionInterface mealActionInterface;
 
+        /**
+         * Meal Grid View Holder constructor
+         * @param itemView - a view
+         * @param mealActionInterface - a meal action
+         */
         public MealGridViewHolder(@NonNull View itemView, MealActionInterface mealActionInterface) {
             super(itemView);
             view = itemView;
@@ -45,6 +56,9 @@ public class MealGridAdapter extends RecyclerView.Adapter<MealGridAdapter.MealGr
             setupListeners();
         }
 
+        /**
+         * Setup the favorite btn listener
+         */
         private void setupListeners() {
             isFavorite.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
@@ -71,11 +85,19 @@ public class MealGridAdapter extends RecyclerView.Adapter<MealGridAdapter.MealGr
     private List<MealItemViewModel> mealItemViewModelList;
     private MealActionInterface mealActionInterface;
 
+    /**
+     * Meal Grid Adapter constructor
+     * @param mealActionInterface - a meal action
+     */
     public MealGridAdapter(MealActionInterface mealActionInterface) {
         mealItemViewModelList = new ArrayList<>();
         this.mealActionInterface = mealActionInterface;
     }
 
+    /**
+     * Add list to class variable
+     * @param mealItemViewModelList - the list of meal items
+     */
     public void bindViewModels(List<MealItemViewModel> mealItemViewModelList) {
         this.mealItemViewModelList.clear();
         this.mealItemViewModelList.addAll(mealItemViewModelList);

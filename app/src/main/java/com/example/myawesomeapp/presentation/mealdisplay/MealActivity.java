@@ -12,13 +12,15 @@ import com.example.myawesomeapp.R;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+/**
+ * Meal Activity
+ */
 public class MealActivity extends AppCompatActivity {
 
     private TextView mealTitle;
     private TextView mealDescription;
     private ImageView mealThumbnail;
     private CheckBox isFavorite;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -1,5 +1,8 @@
 package com.example.myawesomeapp.presentation.mealdisplay.meals.adapter;
 
+/**
+ * Meal Item View Model
+ */
 public class MealItemViewModel {
     private String id;
     private String title;

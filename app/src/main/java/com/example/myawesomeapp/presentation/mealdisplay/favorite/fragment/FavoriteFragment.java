@@ -5,12 +5,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.Toolbar;
 
 import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -30,6 +27,9 @@ import com.example.myawesomeapp.R;
 
 import java.util.List;
 
+/**
+ * Favorite fragment class
+ */
 public class FavoriteFragment extends Fragment implements FavoriteActionInterface {
 
     private View view;
@@ -38,6 +38,9 @@ public class FavoriteFragment extends Fragment implements FavoriteActionInterfac
     private MealFavoriteViewModel mealFavoriteViewModel;
     private MealsViewModel mealsViewModel;
 
+    /**
+     * Favorite fragment empty constructor
+     */
     public FavoriteFragment(){
 
     }
@@ -50,6 +53,9 @@ public class FavoriteFragment extends Fragment implements FavoriteActionInterfac
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_meals, container, false);
 
+        recyclerView = view.findViewById(R.id.recycler_view);
+
+        // Recover and hide the toolbar
         Toolbar headerToolbar = (Toolbar) getActivity().findViewById(R.id.header);
         headerToolbar.setVisibility(View.INVISIBLE);
 
@@ -89,11 +95,13 @@ public class FavoriteFragment extends Fragment implements FavoriteActionInterfac
         });
     }
 
+    /**
+     * Setup the recycler view
+     */
     private void setupRecyclerView() {
-        recyclerView = view.findViewById(R.id.recycler_view);
         favoriteAdapter = new FavoriteAdapter(this);
         recyclerView.setAdapter(favoriteAdapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
+        recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext())); // linear by default
     }
 
     @Override

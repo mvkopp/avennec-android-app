@@ -5,7 +5,6 @@ import android.content.Context;
 import androidx.room.Room;
 
 import com.example.myawesomeapp.data.api.ApiService;
-import com.example.myawesomeapp.data.api.model.Meal;
 import com.example.myawesomeapp.data.db.MealDataBase;
 import com.example.myawesomeapp.data.repository.MealRepository;
 import com.example.myawesomeapp.data.repository.local.MealLocalDataSource;
@@ -21,11 +20,15 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+/**
+ * Fake Depedency Injection
+ */
 public class FakeDepedencyInjection {
+    // database
     private static MealDataBase mealDataBase;
-
+    // repository
     public static MealRepository mealRepository;
-
+    // api service
     public static ApiService apiService;
 
     public static Retrofit retrofit;
@@ -34,25 +37,40 @@ public class FakeDepedencyInjection {
     private static ViewModelFactory viewModelFactory;
     private static Context applicationContext;
 
-
+    /**
+     * Create or Get the view model factory singleton
+     * @return view model factory singleton
+     */
     public static ViewModelFactory getViewModelFactory() {
         if (viewModelFactory == null)
             viewModelFactory = new ViewModelFactory(getMealRepository());
         return viewModelFactory;
     }
 
+    /**
+     * Create or Get the view meal repository singleton
+     * @return meal repository singleton
+     */
     public static MealRepository getMealRepository() {
         if (mealRepository == null)
             mealRepository = new MealRepository(new MealRemoteDataSource(getApiService()), new MealLocalDataSource(getMealDataBase()), new MealToMealEntityMapper());
         return mealRepository;
     }
 
+    /**
+     * Create or Get the api service singleton
+     * @return api service singleton
+     */
     public static ApiService getApiService() {
         if (apiService == null)
             apiService = getRetrofit().create(ApiService.class);
         return apiService;
     }
 
+    /**
+     * Create or Get the retrofit singleton
+     * @return retrofit singleton
+     */
     public static Retrofit getRetrofit() {
         if (retrofit == null) {
             HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
@@ -72,6 +90,10 @@ public class FakeDepedencyInjection {
         return retrofit;
     }
 
+    /**
+     * Create or Get the Gson singleton
+     * @return gson singleton
+     */
     public static Gson getGson() {
         if (gson == null) {
             gson = new Gson();
@@ -79,14 +101,22 @@ public class FakeDepedencyInjection {
         return gson;
     }
 
-    public static void setApplicationContext(Context context) {
-        applicationContext = context;
-    }
-
+    /**
+     * Create or Get the meal database singleton
+     * @return meal database singleton
+     */
     public static MealDataBase getMealDataBase() {
         if (mealDataBase == null)
             mealDataBase = Room.databaseBuilder(applicationContext,
                 MealDataBase.class, "meal-database").build();
         return mealDataBase;
+    }
+
+    /**
+     * Set the app context
+     * @param context - the context
+     */
+    public static void setApplicationContext(Context context) {
+        applicationContext = context;
     }
 }

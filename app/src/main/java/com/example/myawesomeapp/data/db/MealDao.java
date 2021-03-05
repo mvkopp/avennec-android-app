@@ -12,6 +12,9 @@ import io.reactivex.Completable;
 import io.reactivex.Flowable;
 import io.reactivex.Single;
 
+/**
+ * Meal DAO
+ */
 @Dao
 public interface MealDao {
 

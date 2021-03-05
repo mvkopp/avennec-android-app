@@ -1,5 +1,8 @@
 package com.example.myawesomeapp.presentation.mealdisplay.favorite.adapter;
 
+/**
+ * Favorite Item View Model
+ */
 public class FavoriteItemViewModel {
     private String id;
     private String title;

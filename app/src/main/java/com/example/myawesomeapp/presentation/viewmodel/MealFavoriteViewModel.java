@@ -18,7 +18,11 @@ import io.reactivex.observers.DisposableCompletableObserver;
 import io.reactivex.schedulers.Schedulers;
 import io.reactivex.subscribers.ResourceSubscriber;
 
+/**
+ * Meal Favorite View Model
+ */
 public class MealFavoriteViewModel extends ViewModel {
+
     private MealRepository mealRepository;
     private CompositeDisposable compositeDisposable;
     private MealEntityToFavoriteViewModelMapper mealEntityToFavoriteViewModelMapper;
@@ -44,6 +48,10 @@ public class MealFavoriteViewModel extends ViewModel {
         mealEntityToFavoriteViewModelMapper = new MealEntityToFavoriteViewModelMapper();
     }
 
+    /**
+     * Recover the favorite meals from local db
+     * @return the favorite meals
+     */
     public MutableLiveData<List<FavoriteItemViewModel>> getFavorites() {
         isDataLoading.setValue(true);
         if (favorites == null) {
@@ -73,6 +81,10 @@ public class MealFavoriteViewModel extends ViewModel {
         return favorites;
     }
 
+    /**
+     * Add a meal to favorites in local db
+     * @param mealEntity - the meal entity
+     */
     public void addMealToFavorite(final MealEntity mealEntity) {
         compositeDisposable.add(mealRepository.addMealToFavorites(mealEntity)
             .subscribeOn(Schedulers.io())
@@ -90,6 +102,10 @@ public class MealFavoriteViewModel extends ViewModel {
             }));
     }
 
+    /**
+     * Delete a meal from favorites in local db
+     * @param id - the meal id
+     */
     public void deleteMealFromFavorite(final String id) {
         compositeDisposable.add(mealRepository.deleteMealFromFavorites(id)
             .subscribeOn(Schedulers.io())

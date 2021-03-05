@@ -4,6 +4,9 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
+/**
+ * Meal model
+ */
 public class Meal {
     @SerializedName("idCategory")
     private String id;
@@ -35,6 +38,10 @@ public class Meal {
         return thumbnail;
     }
 
+    /**
+     * Set favorite state
+     * @param favorite - true if is favorite, else otherwise
+     */
     public void setFavorite(boolean favorite) {
         isFavorite = favorite;
     }

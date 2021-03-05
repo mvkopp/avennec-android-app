@@ -6,9 +6,17 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.myawesomeapp.data.repository.MealRepository;
 
+/**
+ * View Model Factory
+ */
 public class ViewModelFactory implements ViewModelProvider.Factory {
+
     private final MealRepository mealRepository;
 
+    /**
+     * View Model Factory constructor
+     * @param mealRepository - meal repository
+     */
     public ViewModelFactory(MealRepository mealRepository) {
         this.mealRepository = mealRepository;
     }
