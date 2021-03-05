@@ -1,5 +1,6 @@
 <resources>
-    <string name="app_name">myAwesomeApp</string>
+    <string name="app_name">Resto\'clock</string>
+    <string name="title_home">Home</string>
     <string name="title_list">List</string>
     <string name="title_grid">Grid</string>
     <string name="title_favorite">Favorites</string>
