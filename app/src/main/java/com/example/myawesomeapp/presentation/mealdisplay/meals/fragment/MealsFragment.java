@@ -29,6 +29,8 @@ import com.example.myawesomeapp.presentation.viewmodel.MealsViewModel;
 
 import com.example.myawesomeapp.R;
 
+import org.w3c.dom.Text;
+
 import java.util.List;
 
 /**
@@ -41,6 +43,7 @@ public class MealsFragment extends Fragment implements MealActionInterface {
 
     private ImageView listGridBtn;
     private TextView stateLabel;
+    private TextView favoriteLabel;
 
     private MealListAdapter mealListAdapter;
     private MealGridAdapter mealGridAdapter;
@@ -73,12 +76,16 @@ public class MealsFragment extends Fragment implements MealActionInterface {
         recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
 
+        // Recover the activity elements
         stateLabel = (TextView) getActivity().findViewById(R.id.stateLabel);
         listGridBtn = (ImageView) getActivity().findViewById(R.id.listGridBtn);
+        favoriteLabel = (TextView) getActivity().findViewById(R.id.favoriteLabel);
 
-        // Recover the toolbar and display it
-        Toolbar headerToolbar = (Toolbar) getActivity().findViewById(R.id.header);
-        headerToolbar.setVisibility(View.VISIBLE);
+        // Set stateLabel and listGridBtn to visible
+        stateLabel.setVisibility(View.VISIBLE);
+        listGridBtn.setVisibility(View.VISIBLE);
+        // Set the favorite label to invisible
+        favoriteLabel.setVisibility(View.INVISIBLE);
 
         return view;
     }

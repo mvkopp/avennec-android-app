@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toolbar;
 
 import androidx.annotation.Nullable;
@@ -38,6 +40,10 @@ public class FavoriteFragment extends Fragment implements FavoriteActionInterfac
     private MealFavoriteViewModel mealFavoriteViewModel;
     private MealsViewModel mealsViewModel;
 
+    private ImageView listGridBtn;
+    private TextView stateLabel;
+    private TextView favoriteLabel;
+
     /**
      * Favorite fragment empty constructor
      */
@@ -55,9 +61,16 @@ public class FavoriteFragment extends Fragment implements FavoriteActionInterfac
 
         recyclerView = view.findViewById(R.id.recycler_view);
 
-        // Recover and hide the toolbar
-        Toolbar headerToolbar = (Toolbar) getActivity().findViewById(R.id.header);
-        headerToolbar.setVisibility(View.INVISIBLE);
+        // Recover the activity elements
+        stateLabel = (TextView) getActivity().findViewById(R.id.stateLabel);
+        listGridBtn = (ImageView) getActivity().findViewById(R.id.listGridBtn);
+        favoriteLabel = (TextView) getActivity().findViewById(R.id.favoriteLabel);
+
+        // Set stateLabel and listGridBtn to invisible
+        stateLabel.setVisibility(View.INVISIBLE);
+        listGridBtn.setVisibility(View.INVISIBLE);
+        // Set the favorite label to visible
+        favoriteLabel.setVisibility(View.VISIBLE);
 
         return view;
     }
