@@ -65,7 +65,6 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.Favori
         private ConstraintLayout mealLayout;
         private ImageView mealThumbnail;
         private TextView mealTitle;
-        private TextView mealDescription;
         private CheckBox isFavorite;
 
         private View view;
@@ -80,7 +79,6 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.Favori
             mealThumbnail = view.findViewById(R.id.mealThumbnail);
             isFavorite = view.findViewById(R.id.isFavorite);
             mealLayout = view.findViewById(R.id.mealLayout);
-            mealDescription = itemView.findViewById(R.id.mealDescription);
 
             setupListeners();
             this.favoriteActionInterface = favoriteActionInterface;
@@ -105,7 +103,6 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.Favori
                 .load(favoriteItemViewModel.getThumbnail())
                 .into(mealThumbnail);
             isFavorite.setChecked(true);
-            mealDescription.setText(favoriteItemViewModel.getDescription());
         }
     }
 }

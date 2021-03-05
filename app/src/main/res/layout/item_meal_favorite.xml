@@ -7,16 +7,6 @@
     android:layout_height="wrap_content"
     android:padding="10dp">
 
-    <View
-        android:id="@+id/divider"
-        android:layout_width="match_parent"
-        android:layout_height="3dp"
-        android:layout_marginTop="8dp"
-        android:background="@color/colorPrimaryDark"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <Space
         android:id="@+id/spacer"
         android:layout_width="45dp"
@@ -24,6 +14,15 @@
         android:clickable="false"
         app:layout_constraintBottom_toTopOf="@+id/divider"
         app:layout_constraintStart_toEndOf="@+id/divider" />
+
+    <ImageView
+        android:id="@+id/mealThumbnail"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:scaleType="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/mealTitle" />
 
     <TextView
         android:id="@+id/mealTitle"
@@ -37,38 +36,27 @@
         app:layout_constraintStart_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/divider"/>
 
+    <View
+        android:id="@+id/divider"
+        android:layout_width="100dp"
+        android:layout_height="3dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/colorPrimaryDark"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <CheckBox
         android:id="@+id/isFavorite"
         android:layout_width="30dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="31dp"
-        android:layout_marginEnd="10dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="4dp"
         android:button="@drawable/ic_favorite_button"
-        android:buttonTint="#000000"
-        android:textColorHighlight="#000000"
-        android:textColorHint="#000000"
-        android:textColorLink="#000000"
-        app:layout_constraintEnd_toStartOf="@+id/spacer"
-        app:layout_constraintTop_toTopOf="@+id/spacer" />
-
-    <ImageView
-        android:id="@+id/mealThumbnail"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:scaleType="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/mealTitle" />
-
-    <TextView
-        android:id="@+id/mealDescription"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        android:textColor="#959595"
-        android:textSize="8sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mealThumbnail"
-        />
+        android:buttonTint="@color/colorFavoriteButton"
+        android:textColorHighlight="@color/colorFavoriteButton"
+        android:textColorHint="@color/colorFavoriteButton"
+        android:textColorLink="@color/colorFavoriteButton"
+        app:layout_constraintTop_toTopOf="@+id/spacer"
+        app:layout_constraintEnd_toStartOf="@+id/mealTitle"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
